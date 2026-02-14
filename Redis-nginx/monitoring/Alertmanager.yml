@@ -1,0 +1,11 @@
+global:
+  resolve_timeout: 5m
+
+route:
+  receiver: mattermost-main
+
+receivers:
+  - name: mattermost-main
+    webhook_configs:
+      - url: http://mattermost:8065/hooks/your-webhook-url
+        send_resolved: true

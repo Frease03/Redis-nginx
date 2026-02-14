@@ -1,0 +1,5 @@
+*
+!redis.conf
+!redis-modules/*.so
+!Dockerfile
+!docker-compose.yml

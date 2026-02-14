@@ -1,0 +1,90 @@
+{
+  "id": null,
+  "uid": "redis-nginx-dashboard",
+  "title": "Redis via Nginx Proxy Dashboard",
+  "tags": ["redis", "nginx", "monitoring"],
+  "timezone": "browser",
+  "schemaVersion": 36,
+  "version": 1,
+  "refresh": "30s",
+  "panels": [
+    {
+      "type": "row",
+      "title": "Redis Metrics",
+      "gridPos": { "x": 0, "y": 0, "w": 24, "h": 1 }
+    },
+    {
+      "type": "graph",
+      "title": "Redis Connected Clients",
+      "targets": [
+        {
+          "expr": "redis_connected_clients",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 1, "w": 12, "h": 8 }
+    },
+    {
+      "type": "graph",
+      "title": "Redis Ops per Second",
+      "targets": [
+        {
+          "expr": "rate(redis_commands_processed_total[1m])",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 1, "w": 12, "h": 8 }
+    },
+    {
+      "type": "graph",
+      "title": "Redis Memory Usage (MB)",
+      "targets": [
+        {
+          "expr": "redis_memory_used_bytes / 1024 / 1024",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 9, "w": 12, "h": 8 }
+    },
+
+    {
+      "type": "row",
+      "title": "Nginx Proxy Metrics",
+      "gridPos": { "x": 0, "y": 17, "w": 24, "h": 1 }
+    },
+    {
+      "type": "graph",
+      "title": "Nginx Active Connections",
+      "targets": [
+        {
+          "expr": "nginx_connections_active",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "gridPos": { "x": 0, "y": 18, "w": 12, "h": 8 }
+    },
+    {
+      "type": "graph",
+      "title": "Nginx Requests per Second",
+      "targets": [
+        {
+          "expr": "rate(nginx_http_requests_total[1m])",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 18, "w": 12, "h": 8 }
+    },
+
+    {
+      "type": "graph",
+      "title": "Nginx Up Status",
+      "targets": [
+        {
+          "expr": "nginx_up",
+          "legendFormat": "{{instance}}"
+        }
+      ],
+      "gridPos": { "x": 12, "y": 27, "w": 12, "h": 8 }
+    }
+  ]
+}
